@@ -1,0 +1,100 @@
+Справка по синтаксису
+Команды
+1. СОЗДАТЬ
+CREATE TABLE table_name (
+                column1 datatype,
+                column2 datatype,
+                ....);
+Пример
+CREATE TABLE EMPLOYEE (
+  empId INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  dept TEXT NOT NULL
+);
+2. ИЗМЕНИТЬ
+ALTER TABLE Table_name ADD column_name datatype;
+Пример
+INSERT INTO EMPLOYEE VALUES (0001, 'Dave', 'Sales');
+3. ОБРЕЗАТЬ
+TRUNCATE table table_name;
+4. КАПИТЬ
+DROP TABLE table_name;
+5. ПЕРЕИМЕНОВАТЬ
+RENAME TABLE table_name1 to new_table_name1; 
+6. КОММЕНТАРИЙ
+Однострочные комментарии:
+ --Line1;
+Многострочные комментарии:
+   /* Line1,
+   Line2 */
+DML-команды
+1. ВСТАВИТЬ
+INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
+Примечание. Имена столбцов необязательны.
+
+Пример
+INSERT INTO EMPLOYEE VALUES (0001, 'Ava', 'Sales');
+2. ВЫБЕРИТЕ
+SELECT column1, column2, ...
+FROM table_name
+[where condition]; 
+Пример
+SELECT * FROM EMPLOYEE where dept ='sales';
+3. ОБНОВЛЕНИЕ
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition; 
+Пример
+UPDATE EMPLOYEE SET dept = 'Sales' WHERE empId='0001'; 
+4. УДАЛИТЬ
+DELETE FROM table_name where condition;
+Пример
+DELETE from EMPLOYEE where empId='0001'; 
+Индексы
+1. СОЗДАЙТЕ ИНДЕКС
+  CREATE INDEX index_name on table_name(column_name);
+Чтобы создать уникальный индекс:
+  CREATE UNIQUE INDEX index_name on table_name(column_name);
+2. ПАДЕНИЕ ИНДЕКС
+DROP INDEX index_name ON table_name;
+Просмотры
+1. Создайте представление
+Creating a View:
+CREATE VIEW View_name AS 
+Query;
+2. Как вызвать просмотр
+SELECT * FROM View_name;
+3. Изменение вида
+ALTER View View_name AS 
+Query;
+4. Удаление представления
+DROP VIEW View_name;
+Триггеры
+1. Создайте триггер
+CREATE TRIGGER trigger_name trigger_time trigger_event
+    ON tbl_name FOR EACH ROW [trigger_order] trigger_body
+/* where
+trigger_time: { BEFORE | AFTER }
+trigger_event: { INSERT | UPDATE | DELETE }
+trigger_order: { FOLLOWS | PRECEDES } */
+2. Сбросьте триггер
+DROP TRIGGER [IF EXISTS] trigger_name;
+Хранимые процедуры
+1. Создайте хранимую процедуру
+CREATE PROCEDURE sp_name(p1 datatype)
+BEGIN
+/*Stored procedure code*/
+END;
+2. Как вызвать хранимую процедуру
+CALL sp_name;
+3. Как удалить хранимую процедуру
+DROP PROCEDURE sp_name;
+Присоединяется
+1. ВНУТРЕННЕЕ СОЕДИНЕНИЕ
+SELECT * FROM TABLE1 INNER JOIN TABLE2 where condition;
+2. ЛЕВОЕ СОЕДИНЕНИЕ
+SELECT * FROM TABLE1 LEFT JOIN TABLE2 ON condition;
+3. ПРАВОЕ СОЕДИНЕНИЕ
+SELECT * FROM TABLE1 RIGHT JOIN TABLE2 ON condition;
+4. ПЕРЕКРЕСТНОЕ СОЕДИНЕНИЕ
+SELECT select_list from TABLE1 CROSS JOIN TABLE2;
